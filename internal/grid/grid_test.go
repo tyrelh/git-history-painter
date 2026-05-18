@@ -106,8 +106,8 @@ func TestCellAtOutOfRange(t *testing.T) {
 
 func TestLevelForCount(t *testing.T) {
 	cases := []struct{ n, want int }{
-		{-1, 0}, {0, 0}, {1, 1}, {2, 1}, {3, 2}, {5, 2},
-		{6, 3}, {9, 3}, {10, 4}, {100, 4},
+		{-1, 0}, {0, 0}, {1, 1}, {5, 1}, {9, 1},
+		{10, 2}, {19, 2}, {20, 3}, {39, 3}, {40, 4}, {100, 4},
 	}
 	for _, c := range cases {
 		if got := LevelForCount(c.n); got != c.want {

@@ -11,8 +11,13 @@ const (
 
 // IntensityCommits maps a cell's intensity level (0-4) to the number
 // of commits to make for that day. Level 0 means no commits.
-// The non-zero counts loosely mirror GitHub's historical bucket cutoffs.
-var IntensityCommits = [5]int{0, 1, 3, 6, 10}
+//
+// GitHub buckets daily contribution counts into shades by quartiles of
+// the year's max across all of a user's repos — so absolute thresholds
+// depend on the user's other activity. The non-zero counts here spread
+// 1:10:20:40 so that even on a busy account level 4 lands in the top
+// quartile and the four shades stay visually distinct.
+var IntensityCommits = [5]int{0, 1, 10, 20, 40}
 
 // Grid is a 7-row by 52-column board of intensity levels.
 // Row 0 is Sunday, row 6 is Saturday. Column 0 is the leftmost (oldest) week.

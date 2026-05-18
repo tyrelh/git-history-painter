@@ -20,8 +20,9 @@ import (
 const ToolPrefix = "history: "
 
 // Generate writes one empty commit for each unit of intensity in the grid.
-// Commits within a single day are spread one hour apart starting at 09:00
-// UTC so each gets a unique author/committer date and a unique hash.
+// Commits within a single day are spread one minute apart starting at
+// 09:00 UTC so each gets a unique author/committer date and a unique
+// hash without spilling into the next day.
 //
 // `progress`, if non-nil, receives a human-readable line for every commit.
 func Generate(repoDir string, g *grid.Grid, progress io.Writer) error {
@@ -40,7 +41,7 @@ func Generate(repoDir string, g *grid.Grid, progress io.Writer) error {
 			day := g.DateAt(row, col)
 			for i := 0; i < n; i++ {
 				ts := time.Date(day.Year(), day.Month(), day.Day(),
-					9+i, 0, 0, 0, time.UTC)
+					9, i, 0, 0, time.UTC)
 				if err := commitAt(repoDir, ts); err != nil {
 					return fmt.Errorf("commit for %s: %w", ts.Format(time.RFC3339), err)
 				}
