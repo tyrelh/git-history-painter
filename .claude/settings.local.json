@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go version *)",
+      "Bash(go get *)",
+      "Bash(go mod *)",
+      "Bash(go build *)",
+      "Bash(go test *)",
+      "Read(//private/tmp/**)",
+      "Bash(/Users/tyrel/Projects/git-history/git-history --dir /tmp)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(./git-history --dir /tmp)",
+      "Bash(go vet *)"
+    ]
+  }
+}
