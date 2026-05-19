@@ -1,9 +1,12 @@
-# Build
+# GitHub History Painter
+![Screenshot of TUI showing pacman and three ghosts on the GitHub contribution graph](./screenshot.png)
+
+## Build
 ```bash
 go build ./cmd/git-history
 ```
 
-# Usage
+## Usage
 ```bash
 ./git-history --dir ~/Projects/git-history
 ```
@@ -15,7 +18,7 @@ Flags:
 - `-no-load` — start from an empty grid even if the repo already has painted commits
 - `-dry-run` — paint but don't write anything
 
-## Pushing changes
+### Pushing changes
 ```bash
 cd ~/Projects/git-history   # or wherever -dir pointed
 
